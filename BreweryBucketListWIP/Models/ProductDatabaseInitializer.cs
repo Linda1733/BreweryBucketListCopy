@@ -6,12 +6,12 @@ using System.Data.Entity;
 
 namespace BreweryBucketListWIP.Models
 {
-    public class ProductDatabaseInitializer : DropCreateDatabaseAlways<ProductContext>
+    public class ProductDatabaseInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
     {
         protected override void Seed(ProductContext context)
         {
-            GetCategories().ForEach(c => context.Categories.Add(c);
-            GetProducts().ForEach(p => p.context.Products.Add(p));
+            GetCategories().ForEach(c => context.Categories.Add(c));
+            GetProducts().ForEach(p => context.Products.Add(p));
         }
 
         private static List<Category> GetCategories()
@@ -47,7 +47,7 @@ namespace BreweryBucketListWIP.Models
             return categories; 
         }
 
-        private static List<Products> GetProducts()
+        private static List<Product> GetProducts()
         {
             var products = new List<Product>{ 
                 new Product
