@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Linq;
+using BreweryBucketListWIP.Models;
 
 namespace BreweryBucketListWIP
 {
@@ -70,6 +72,17 @@ namespace BreweryBucketListWIP
         {
 
         }
+
+        // Code is executed when any page that uses the master page is loaded in the browser
+        // created method called [GetCategories] which will be called to data bind the returned data
+        public IQueryable<Category> GetCategories()
+        {
+            var _db = new BreweryBucketListWIP.Models.ProductContext();
+            IQueryable<Category> query = _db.Categories;
+            return query;
+        }
+
+
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {

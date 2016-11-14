@@ -11,7 +11,6 @@ namespace BreweryBucketListWIP.Models
         public ProductContext() : base("BreweryBucketListWIP")
         {
         }
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
     }

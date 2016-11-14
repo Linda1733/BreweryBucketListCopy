@@ -6,6 +6,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Data.Entity;
+using BreweryBucketListWIP.Models;
 
 namespace BreweryBucketListWIP
 {
@@ -16,6 +18,9 @@ namespace BreweryBucketListWIP
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Initialize the product database - this will be called when the Application_Start is ran
+            Database.SetInitializer(new ProductDatabaseInitializer());
         }
     }
 }
